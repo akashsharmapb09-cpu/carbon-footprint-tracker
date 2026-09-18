@@ -1,2 +1,7 @@
-# carbon footprint tracker
-# EcoTrack 🌍 - PlanetPulse  EcoTrack is a personal carbon footprint tracker that helps users understand their environmental impact.  ## 🌱 Features - Log daily activities: Car, Bus, Flight, Electricity, Food - Automatic CO2 calculation with real emission factors - Dashboard with total CO2 and weekly target (10kg) - Visual progress bar and history log - Alerts when weekly limit exceeds  ## 💻 Tech Stack - Frontend: HTML, TailwindCSS, JavaScript - Backend: Supabase (for future data storage) - Hosting: GitHub Pages  ## 🎯 Why this project? People don't know how much CO2 they emit daily. EcoTrack makes it simple, visual and actionable to reduce carbon footprint.  ## 🚀 Live Demo https://YOUR-USERNAME.github.io/carbonfootprint-tracker/  ## Team: PlanetPulse Built for Carbon Footprint Tracker Hackathon
+# EcoTrack 🌍
+
+EcoTrack is a carbon-footprint tracker built with React, TypeScript and Vite.
+
+The repository includes a GitHub Pages deployment workflow. Every push to `main` builds the app and publishes it to GitHub Pages.
+
+Live site: https://akashsharmapb09-cpu.github.io/carbon-footprint-tracker/
