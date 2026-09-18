@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -21,14 +21,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Extract EcoTrack project
+      - name: Bootstrap project files from archive
         run: |
-          test -f ecotrack_github_ready.zip
-          rm -rf /tmp/ecotrack
-          mkdir -p /tmp/ecotrack
-          unzip -q ecotrack_github_ready.zip -d /tmp/ecotrack
-          cp -a /tmp/ecotrack/. .
-          rm -f ecotrack_github_ready.zip
+          if [ ! -f package.json ] && [ -f ecotrack_github_ready.zip ]; then
+            rm -rf /tmp/ecotrack
+            mkdir -p /tmp/ecotrack
+            unzip -q ecotrack_github_ready.zip -d /tmp/ecotrack
+            cp -a /tmp/ecotrack/. .
+            rm -f ecotrack_github_ready.zip
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Bootstrap EcoTrack project files"
+            git push
+          fi
+
+      - name: Verify project structure
+        run: |
+          test -f package.json
+          test -f index.html
+          test -d src
+          test -f vite.config.ts
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
